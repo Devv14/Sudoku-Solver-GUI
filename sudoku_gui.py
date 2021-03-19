@@ -52,16 +52,25 @@ class Sudoku:
     def Clear_all(self):
         if not self.running:
             self.running = True
+            Sudoku.hint_board.clear()
             for i in range(9):
                 for j in range(9):
                     self.entry_list[i][j].config(bg="#ffffff")
                     self.entry_list[i][j].delete(0,tk.END)
                     self.entry_list[i][j].insert(0,"")
             self.running = False
-    
-    def hard_sudoku(self):
-        pyautogui.alert(text='It take few seconds only..!', title='Generating Sudoku', button='OK')
-        self.Genrate_sudoku(100)
+
+    def write_on_file(self,board):
+        with open("log.txt",'w+') as file:
+            # file.truncate()
+            file.write("{}".format(board))
+        file.close()
+
+    def hint_board_(self):
+        with open("log.txt",'r') as file:
+            Sudoku.hint_board = eval(file.read())
+            print(Sudoku.hint_board)
+        file.close()
 
     def Genrate_sudoku(self,dif):
         if not self.running:
@@ -80,6 +89,7 @@ class Sudoku:
 
             # solve the genrated sudoku
             solve(Sudoku.board)
+            self.write_on_file(Sudoku.board)
             self.masterr.update()
             
             # Remove Numbers from boards
@@ -98,8 +108,10 @@ class Sudoku:
                     else:
                         self.entry_list[i][j].insert(0," {}".format(Sudoku.board[i][j]))
             
-            Sudoku.hint_board = Sudoku.board.copy()
-            solve(Sudoku.hint_board)
+            # Sudoku.hint_board = Sudoku.board.copy()
+            # solve(Sudoku.hint_board)
+            self.hint_board_()      #   Hint Board
+
             self.masterr.update()
             self.running = False
             
@@ -134,10 +146,10 @@ class Sudoku:
         self.New_game_b = tk.Label(text='New Game', bg="#76a8e2", fg="white")
         self.New_game_b.grid(row=0, column=11, padx=5)
 
-        self.Easy_b = tk.Button(text='Easy', bg="#4a90e2", fg="white", relief='flat', activebackground="white", width=8, command= lambda: self.Genrate_sudoku(60))
+        self.Easy_b = tk.Button(text='Easy', bg="#4a90e2", fg="white", relief='flat', activebackground="white", width=8, command= lambda:self.Genrate_sudoku(60))
         self.Easy_b.grid(row=1, column=11, padx=5)
 
-        self.Hard_b = tk.Button(text='Hard', bg="#4a90e2", fg="white", relief='flat', activebackground="white", width=8, command=self.hard_sudoku)
+        self.Hard_b = tk.Button(text='Hard', bg="#4a90e2", fg="white", relief='flat', activebackground="white", width=8, command=lambda: self.Genrate_sudoku(100))
         self.Hard_b.grid(row=2, column=11, padx=5)
         
         self.Hint_b = tk.Button(text='Hint', bg="#4a90e2", fg="white", relief='flat', activebackground="white", width=8, command=self.Hint)
