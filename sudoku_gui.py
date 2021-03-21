@@ -27,6 +27,7 @@ class Sudoku:
         self.select_time = 0
         self.green_time = 0.05
         self.red_time = 0.04
+        self.bot_time = 0
 
 
     def current_pos(self,x,y):
@@ -69,7 +70,6 @@ class Sudoku:
     def hint_board_(self):
         with open("log.txt",'r') as file:
             Sudoku.hint_board = eval(file.read())
-            print(Sudoku.hint_board)
         file.close()
 
     def Genrate_sudoku(self,dif):
@@ -263,14 +263,15 @@ class Sudoku:
                 time.sleep(5)
                 for i in range(9):
                     for j in range(9):
-                        self.select_green(i,j)
                         if (i+1)%2!=0:
+                            self.select_green(i,j)
                             pyautogui.press('{}'.format(Sudoku.board[i][j]))
                             pyautogui.press('right')       
                         elif (i+1)%2==0:
+                            self.select_green(i,8-j)
                             pyautogui.press('{}'.format(Sudoku.board[i][8-j]))
                             pyautogui.press('left')
-                        time.sleep(0.1)
+                        time.sleep(self.bot_time)
                         
                     pyautogui.press('down')
             self.running = False
