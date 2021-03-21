@@ -14,6 +14,10 @@ import time
 import pyautogui
 </t></pre>
 
+<pre>
+Python 3.9.0
+</pre>
+
 <br />
 <pre>
 <t>
