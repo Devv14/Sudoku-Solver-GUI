@@ -13,3 +13,10 @@ import tkinter as tk
 import time
 import pyautogui
 </t></pre>
+
+<br />
+<pre>
+<t>
+©NN
+</t>
+</pre>
