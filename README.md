@@ -1,6 +1,6 @@
 # Sudoku-Solver-GUI
-This is a Sudoku Game it has many features like <b>Sudoku Solver</b> can able to solve any game by it self, 
-It can <b>generates Sudoku puzzle</b> of two types <i>Easy</i> and <i>Hard</i>, The thing I really like is that it
+This is a Sudoku Game it has many features like <b><u>Sudoku Solver</u></b> can able to solve any game by it self, 
+It can <b><u>generates Sudoku puzzle</u></b> of two types <i>Easy</i> and <i>Hard</i>, The thing I really like is that it
 solves with visualization of Backtracking Algorithm
 
 <br /> <br />
