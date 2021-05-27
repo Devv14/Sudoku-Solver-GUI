@@ -1,12 +1,20 @@
 # sudoku game board
 
-from solver import *
-import numpy as np
+try:
+    from solver import *
+except: print("solver.py file not found")
 import random
-import tkinter as tk
 import time
-import pyautogui
 
+try:
+    import numpy as np
+    import tkinter as tk
+    import pyautogui
+except:
+    import os
+    os.system("pip install numpy")
+    os.system("pip install tk")
+    os.system("pyautogui")
 
 class Sudoku:
     
