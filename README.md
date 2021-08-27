@@ -18,6 +18,15 @@ import pyautogui
 Python 3.9.0
 </pre>
 
+# Visual Solve
+
+![Easy Game Visual Solve](video/easy-visual-solve.gif)
+
+![Hard Game Visual Solve](video/hard-visual-solve.gif)
+
+# Speed Solve
+![Game Speed Solve](video/speed-solve.gif)
+
 <br />
 <pre>
 <t>
